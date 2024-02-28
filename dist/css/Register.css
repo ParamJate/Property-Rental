@@ -1,0 +1,108 @@
+:export {
+  pink: #F9629F;
+  blue: #24355A;
+  lightgrey: #F7F8F8;
+  grey: #bdb9b9;
+  darkgrey: #969393;
+  lightblue: #87CEEB;
+}
+
+.register {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: url(../../public/assets/register.jpg);
+  background-size: cover;
+}
+.register .hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #ffffff;
+}
+.register .hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.register .hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.register .register_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 30%;
+  height: 450px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 15px;
+}
+.register .register_content button {
+  margin: 10px 20px;
+  font-size: 20px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+  background-color: #87CEEB;
+  color: #2e2e2e;
+  width: 50%;
+}
+.register .register_content button:hover {
+  box-shadow: 0px 0px 10px 0px rgb(162, 154, 154);
+}
+.register .register_content a {
+  text-decoration: none;
+  color: white;
+  margin-top: 7px;
+  font-size: 17px;
+}
+.register .register_content form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1vh 0;
+  width: 100%;
+}
+.register .register_content form input {
+  position: relative;
+  height: 30px;
+  width: 80%;
+  padding: 1vh;
+  margin: 10px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.5px solid #fff;
+  text-align: center;
+  color: #fff;
+  cursor: auto;
+}
+.register .register_content form input :focus {
+  background-color: transparent;
+}
+.register .register_content form input:focus::-webkit-input-placeholder {
+  font-size: 10px;
+  position: relative;
+  top: -5px;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+.register .register_content form input::-webkit-input-placeholder {
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}/*# sourceMappingURL=Register.css.map */

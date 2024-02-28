@@ -1,0 +1,39 @@
+$pink: #F9629F;
+$blue: #24355A;
+$lightgrey: #F7F8F8;
+$grey: #bdb9b9;
+$darkgrey: #969393;
+$lightblue: #87CEEB;
+
+
+@mixin shadow {
+  box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+@mixin buttonStyle {
+  // padding: 10px 15px;
+  // background-color: $pinkred;
+  // border: none;
+  // font-size: 20px;
+  // font-weight: 600;
+  // cursor: pointer;
+  // transition: 0.3s ease;
+  // color: white;
+  // border-radius: 10px;
+      margin: 10px 20px; 
+      font-size: 2vw;
+      padding: 10px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+
+}
+
+:export {
+  pink: $pink;
+  blue: $blue;
+  lightgrey: $lightgrey;
+  grey: $grey;
+  darkgrey: $darkgrey;
+  lightblue: $lightblue
+}
