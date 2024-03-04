@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const multer = require('multer')
+// const multer = require('multer')
 
 const User = require('../models/User')
 
@@ -29,9 +29,10 @@ router.post('/register', async(req, res) =>{
         //sending success msg
         
         res.status(200).json({ message:"User registered successfully!", user: newUser})
-    } catch(err){}
+    } catch(err){
         console.log(err)
         res.status(500).json({ message: "registartion failed!", error: err.messasge})  
+    }
 })
 
 module.exports = router

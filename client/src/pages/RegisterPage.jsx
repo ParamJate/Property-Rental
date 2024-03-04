@@ -9,14 +9,14 @@ const RegisterPage = () => {
     lastName:"",
     email:"",
     password:"",
-    confirmPassword:""
+    confirmPassword:"",
   })
 
   const handleChange = (e) =>{
     const {name, value} = e.target
     setFormData({
       ...formData,
-      [name]:value
+      [name]:value,
     })
   }
   const [passMatch, setPassMatch] = useState(true)
@@ -27,25 +27,25 @@ const RegisterPage = () => {
 
   const navigate = useNavigate()
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault()
 
     try {
       const register_form = new FormData()
 
-      for(var key in register_form){
+      for (var key in formData) {
         register_form.append(key, formData[key])
       }
 
-      const response = fetch('https://localhost:3001/auth/register', {
+      const response = await fetch("http://localhost:3001/auth/register",{
         method: "POST",
         body: register_form
       })
 
-      if (response.ok){
-        navigate('/login')
+      if (response.ok) {
+        navigate("/login")
       }
-    } catch(err){
+    } catch (err) {
       console.log("Registration failed", err.message)
     }
   }
@@ -113,3 +113,4 @@ const RegisterPage = () => {
 }
 
 export default RegisterPage
+
