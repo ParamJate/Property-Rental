@@ -4,13 +4,13 @@ import '../styles/Register.scss'
 
 const RegisterPage = () => {
   
-  const[formData, setFormData] = useState({
-    firstName: "",
-    lastName:"",
-    email:"",
-    password:"",
-    confirmPassword:"",
-  })
+const[formData, setFormData] = useState({
+  firstName: "",
+  lastName:"",
+  email:"",
+  password:"",
+  confirmPassword:"",
+})
 
   const handleChange = (e) =>{
     const {name, value} = e.target
@@ -23,7 +23,7 @@ const RegisterPage = () => {
   
   useEffect(()=>{
     setPassMatch(formData.password === formData.confirmPassword || formData.confirmPassword==="")
-  })
+  }, [formData.password, formData.confirmPassword])
 
   const navigate = useNavigate()
 

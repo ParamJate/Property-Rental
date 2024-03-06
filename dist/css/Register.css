@@ -93,7 +93,7 @@
   cursor: auto;
 }
 .register .register_content form input :focus {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 .register .register_content form input:focus::-webkit-input-placeholder {
   font-size: 10px;

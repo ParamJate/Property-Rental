@@ -176,7 +176,7 @@
         cursor:auto;
 
         :focus{
-          background-color: transparent;
+          background-color: transparent !important;
         }
     
         &:focus::-webkit-input-placeholder {
