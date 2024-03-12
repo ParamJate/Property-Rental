@@ -3,12 +3,15 @@ const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 const cors = require('cors')
+// const bodyParser = require('body-parser')
  
-const authRoutes = require('./routes/auth.js')
+const authRoutes = require("./routes/auth")
 
 app.use(cors())
+// app.use(bodyParser.json())
 app.use(express.json()) 
-app.use(express.static('public'))
+app.use(express.static("public"));
+
 
 app.use('/auth', authRoutes)
 

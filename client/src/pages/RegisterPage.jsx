@@ -27,7 +27,7 @@ const[formData, setFormData] = useState({
 
   const navigate = useNavigate()
 
-  const handleSubmit = async (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault()
 
     try {
@@ -39,7 +39,7 @@ const[formData, setFormData] = useState({
 
       const response = await fetch("http://localhost:3001/auth/register",{
         method: "POST",
-        body: register_form
+        body: register_form      
       })
 
       if (response.ok) {
@@ -54,7 +54,7 @@ const[formData, setFormData] = useState({
   return (
     <div className='register'>
         <div className="register_content">
-            <form className="register_content_form" onSubmit={handleSubmit}>
+            <form method='POST' className="register_content_form" onSubmit={handleSubmit}>
                 <input 
                 className='floating-label'
                 placeholder='First Name'
