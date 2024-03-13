@@ -4,7 +4,7 @@ import { Search, Person, Menu } from "@mui/icons-material"
 import { useSelector } from 'react-redux'
 import "../styles/Navbar.scss"
 
-export const Navbar = () => {
+const Navbar = () => {
 
   const [dropDownMenu, setDropdownMenu] = useState(false)
   const user = useSelector((state) => state.user )  
@@ -32,3 +32,4 @@ export const Navbar = () => {
   )
 }
 
+export default Navbar
