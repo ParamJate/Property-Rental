@@ -35,8 +35,6 @@ const handleSubmit = async(e)=>{
       )
       navigate("/")
     }
-
-
   } catch (err) {
     console.log("Login Failed", err.message)
   }

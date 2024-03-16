@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { IconButton } from "@mui/material"
 import { Search, Person, Menu } from "@mui/icons-material"
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import "../styles/Navbar.scss"
+import { setLogOut } from '../redux/state'
 
 const Navbar = () => {
 
@@ -27,6 +29,27 @@ const Navbar = () => {
           <Menu sx={{color:'grey'}}/>
           <Person sx={{color:'grey'}}/>
         </button>
+
+        {dropDownMenu && !user && (
+          <div className="navbar_right_accountmenu">
+            <Link to="/login">Log In</Link>
+            <Link to="/register">Sign Up</Link>
+          </div>
+        )}
+        
+        {dropDownMenu && user && (
+          <div className="navbar_right_accountmenu">
+            <Link to="">Trip List</Link>
+            <Link to="">Wish List</Link>
+            <Link to="">Property List</Link>
+            <Link to="">Reservation List</Link>
+            <Link to="">Become A Host</Link>
+
+            <Link to="/login">Log Out</Link>
+          </div>
+        )}
+
+        
       </div>
     </div>
   )
