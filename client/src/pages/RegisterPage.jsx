@@ -12,13 +12,13 @@ const[formData, setFormData] = useState({
   confirmPassword:"",
 })
 
-  const handleChange = (e) =>{
+  const handleChange = (e) => {
     const {name, value} = e.target
-    setFormData({
-      ...formData,
+    setFormData((prevState) => ({
+      ...prevState,
       [name]:value,
     })
-  }
+  )}
   const [passMatch, setPassMatch] = useState(true)
   
   useEffect(()=>{
@@ -27,7 +27,7 @@ const[formData, setFormData] = useState({
 
   const navigate = useNavigate()
 
-  const handleSubmit = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     try {
@@ -36,10 +36,15 @@ const[formData, setFormData] = useState({
       for (var key in formData) {
         register_form.append(key, formData[key])
       }
+      
+      const dataObject = Object.fromEntries(register_form)
 
-      const response = await fetch("http://localhost:3001/auth/register",{
+      const response = await fetch("http://localhost:3001/auth/register", {
         method: "POST",
-        body: register_form      
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataObject)
       })
 
       if (response.ok) {
@@ -49,64 +54,82 @@ const[formData, setFormData] = useState({
       console.log("Registration failed", err.message)
     }
   }
+  
 
   
   return (
     <div className='register'>
         <div className="register_content">
+          <h2>Register</h2>
             <form method='POST' className="register_content_form" onSubmit={handleSubmit}>
+              <div className="input-box">
+                <span className="icon"><ion-icon name="person-outline"></ion-icon></span>
                 <input 
                 className='floating-label'
-                placeholder='First Name'
                 type="text" 
                 name='firstName'
                 value={formData.firstName}
                 onChange={handleChange}
                 required
                 />
+                <label>FirstName</label>
+              </div>
+              <div className="input-box">
+                <span className="icon"><ion-icon name="person"></ion-icon></span>
                 <input 
                 className='floating-label'
                 type="text" 
                 name='lastName'
                 value={formData.lastName}
-                placeholder='Last Name'
                 onChange={handleChange}
                 required
                 />
+                <label>LastName</label>
+              </div>  
+              <div className="input-box">
+                <span className="icon"><ion-icon name="mail"></ion-icon></span>
                 <input 
                 className='floating-label'
                 type="email" 
-                placeholder='Email'
                 name='email'
                 value={formData.email}
                 onChange={handleChange}
                 required
                 />
+                <label>Email</label>
+              </div>
+              <div className="input-box">
+                <span className="icon"><ion-icon name="lock-open"></ion-icon></span>
                 <input 
                 className='floating-label'
-                type="passord" 
-                placeholder='Password'
+                type="password" 
                 name='password'
                 value={formData.password}
                 onChange={handleChange}
                 required
                 />
+                <label>Password</label>
+              </div>
+              <div className="input-box">
+                <span className="icon"><ion-icon name="lock-closed"></ion-icon></span>
                 <input 
                 className='floating-label'
                 type="password" 
-                placeholder='Confirm Password'
                 name='confirmPassword'
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
                 />
+                <label>ConfirmPassword</label>
+              </div>
                 {!passMatch && (
-                  <p style={{color: 'red'}}>Password doesn't match!</p>
+                  <p style={{color: 'red', fontSize: '1em', textAlign: 'center', fontWeight: '600'}}>Password doesn't match!</p>
                 )}
-
-              <button type='submit' disabled={!passMatch}>REGISTER</button>
+              <button className='btn' type='submit' disabled={!passMatch}>REGISTER</button>
             </form>
-            <a href="/login" className='hover-underline-animation'>Already have an Account? Log In Here</a>
+            <div className="register-login">
+              <p>Already have an Account?<a href="/login" className='hover-underline-animation'>&nbsp;Login Here</a></p>
+            </div>
         </div>
     </div>
   )

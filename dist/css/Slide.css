@@ -1,16 +1,18 @@
 .slide {
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #F7F8F8;
 }
 .slide h1 {
   padding: 40px 20px;
   font-size: 40px;
   text-align: center;
   color: black;
+  z-index: 9;
 }
 .slide video {
-  height: 400px;
+  height: 500px;
   width: auto;
 }/*# sourceMappingURL=Slide.css.map */

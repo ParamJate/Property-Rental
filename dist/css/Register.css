@@ -7,30 +7,40 @@
   lightblue: #87CEEB;
 }
 
+:export {
+  pink: #F9629F;
+  blue: #24355A;
+  lightgrey: #F7F8F8;
+  grey: #bdb9b9;
+  darkgrey: #969393;
+  lightblue: #87CEEB;
+}
+
 .register {
   width: 100%;
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
+  align-items: center;
   background: url(../../public/assets/register.jpg);
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .register .hover-underline-animation {
   display: inline-block;
   position: relative;
-  color: #ffffff;
+  color: #000;
 }
 .register .hover-underline-animation::after {
   content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
-  height: 0.2px;
+  height: 0.4px;
   bottom: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color: #000000;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -39,70 +49,95 @@
   transform-origin: bottom left;
 }
 .register .register_content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 30%;
-  height: 450px;
-  background-color: rgba(0, 0, 0, 0.9);
-  border-radius: 15px;
-}
-.register .register_content button {
-  margin: 10px 20px;
-  font-size: 20px;
-  padding: 10px 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
-  font-weight: 600;
-  transition: 0.3s ease;
-  background-color: #87CEEB;
-  color: #2e2e2e;
-  width: 50%;
-}
-.register .register_content button:hover {
-  box-shadow: 0px 0px 10px 0px rgb(162, 154, 154);
-}
-.register .register_content a {
-  text-decoration: none;
-  color: white;
-  margin-top: 7px;
-  font-size: 17px;
-}
-.register .register_content form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 1vh 0;
-  width: 100%;
-}
-.register .register_content form input {
   position: relative;
-  height: 30px;
-  width: 80%;
-  padding: 1vh;
-  margin: 10px;
-  outline: none;
-  background-color: transparent;
-  border: none;
-  border-bottom: 0.5px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: transparent;
+  width: 400px;
+  height: 530px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(9px);
+          backdrop-filter: blur(9px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+.register .register_content h2 {
   text-align: center;
-  color: #fff;
-  cursor: auto;
+  font-size: 2em;
+  font-weight: bolder;
 }
-.register .register_content form input :focus {
-  background-color: transparent !important;
+.register .register_content_form {
+  width: 100%;
+  padding: 40px;
+  padding: 37px;
 }
-.register .register_content form input:focus::-webkit-input-placeholder {
-  font-size: 10px;
+.register .register_content_form .input-box {
   position: relative;
-  top: -5px;
-  -webkit-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
+  width: 100%;
+  height: 30px;
+  border-bottom: 2px solid #000;
+  margin: 25px 0;
 }
-.register .register_content form input::-webkit-input-placeholder {
-  -webkit-transition: 0.2s ease-in;
-  transition: 0.2s ease-in;
+.register .register_content_form .input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  font-weight: 500;
+  pointer-events: none;
+  transition: 0.3s;
+}
+.register .register_content_form .input-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 0 35px 0 5px;
+}
+.register .register_content_form .input-box input:focus ~ label {
+  top: -4px;
+}
+.register .register_content_form .input-box input:valid ~ label {
+  top: -4px;
+  font-size: 0.9em;
+}
+.register .register_content_form .input-box .icon {
+  position: absolute;
+  right: 8px;
+  font-size: 1.2em;
+  top: 15%;
+}
+.register .register_content_form .btn {
+  width: 100%;
+  height: 40px;
+  background-color: #000;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+}
+.register .register_content_form .btn:hover {
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
+}
+.register .register_content_form .passpara {
+  color: #000;
+  font-weight: 500;
+}
+.register-login {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #000;
+}
+.register-login a {
+  text-decoration: none;
+  font-weight: 600;
 }/*# sourceMappingURL=Register.css.map */

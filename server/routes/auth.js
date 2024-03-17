@@ -5,8 +5,11 @@ const multer = require('multer')
 
 const User = require('../models/User')
 
+router.get("/", (req, res) => {
+    res.send("Server is running."); // Or any other response you want to send
+});
 
-router.post("/register", async(req, res) =>{
+router.post("/register", async (req, res) =>{
     try{
         const { firstName, lastName, email, password } = req.body
 
@@ -14,7 +17,7 @@ router.post("/register", async(req, res) =>{
         if (existingUser){
             return res.status(409).json({ message: "User already exists!"})
         }
-
+        console.log(req.body)
         const salt = await bcrypt.genSalt()
         const hashedPassword = await bcrypt.hash(password, salt)
         
@@ -36,28 +39,28 @@ router.post("/register", async(req, res) =>{
     }
 })
 
-// router.post("/login", async(req, res)=>{
-//     try {
-//         const { email, password} = req.body
-//         const user = await User.findOne({ email })
-//         if(!user){
-//             return res.status(409).json({ message: "User does not exist!"})
-//         }
+router.post("/login", async(req, res)=>{
+    try {
+        const { email, password} = req.body
+        const user = await User.findOne({ email })
+        if(!user){
+            return res.status(409).json({ message: "User does not exist!"})
+        }
 
-//         const isMatch = await bcrypt.compare(password, user.password)
-//         if(!isMatch){
-//             return res.status(400).json({ message: "Invalid credentials!!"})
-//         }
+        const isMatch = await bcrypt.compare(password, user.password)
+        if(!isMatch){
+            return res.status(400).json({ message: "Invalid credentials!!"})
+        }
 
-//         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET)
-//         delete user.password
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET)
+        delete user.password
 
-//         res.status(200).json({ token, user })
-//     } catch (err) {
-//         console.log(err)
-//         res.status(500).json({ error: err.message})
-//     }
-// })
+        res.status(200).json({ token, user })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ error: err.message})
+    }
+})
 
 
 

@@ -20,10 +20,14 @@ const handleSubmit = async(e)=>{
     const response = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: {
-        "Content-type": "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ email, password})
     })
+
+    if (!response.ok) {
+      throw new Error('Login failed: Invalid credentials or server error');
+    }
 
     const loggedIn = await response.json()
     if(loggedIn){
@@ -43,28 +47,36 @@ const handleSubmit = async(e)=>{
   return (
     <div className='login'>
       <div className="login_content">
+        <h2>Login</h2>
         <form className="login_content_form" onSubmit={handleSubmit}>
-          <input
-            className='floating-label'
-            placeholder='Email'
-            type='text'
-            name='email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            />
-          <input
-            className='floating-label'
-            placeholder='Password'
-            type='password'
-            name='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type='submit'>LOGIN</button>
+          <div className="input-box">
+            <span className='icon'><ion-icon name="mail"></ion-icon></span>
+            <input
+              type='text'
+              name='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              />
+              <label>Email</label>
+          </div>
+          <div className="input-box">
+            <span className='icon'><ion-icon name="lock-closed"></ion-icon></span>
+            <input
+              className='floating-label'
+              type='password'
+              name='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              />
+              <label>Password</label>
+          </div>
+          <button type='submit' className='btn'>LOGIN</button>
         </form>
-        <a href="/register" className='hover-underline-animation'>Didn't have an Account? Sign In Here</a>
+          <div className="login-register">
+            <p>Don't have an account?<a className='hover-underline-animation' href="/register">&nbsp;Register</a></p>
+          </div>
       </div>
     </div>
   )
