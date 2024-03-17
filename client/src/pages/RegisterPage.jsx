@@ -61,6 +61,7 @@ const[formData, setFormData] = useState({
     <div className='register'>
         <div className="register_content">
           <h2>Register</h2>
+          <h2>Form</h2>
             <form method='POST' className="register_content_form" onSubmit={handleSubmit}>
               <div className="input-box">
                 <span className="icon"><ion-icon name="person-outline"></ion-icon></span>
