@@ -72,7 +72,7 @@
         width: 100%;
         height: 50px;
         border-bottom: 2px solid #000;
-        margin: 20px 0;
+        margin: 15px 0;
 
         & label{
           position: absolute;
@@ -97,9 +97,18 @@
 
           &:focus~label{
             top: -2px;
+            font-size: .9em;
           }
           &:valid~label{
             top: -2px;
+            font-size: .9em;
+          }
+
+          &:focus{
+            background-color: transparent !important;
+          }
+          &:-webkit-autofill {
+            background-color: transparent !important;
           }
         }
 

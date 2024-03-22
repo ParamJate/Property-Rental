@@ -69,7 +69,7 @@
   width: 100%;
   height: 50px;
   border-bottom: 2px solid #000;
-  margin: 20px 0;
+  margin: 15px 0;
 }
 .login .login_content_form .input-box label {
   position: absolute;
@@ -93,9 +93,17 @@
 }
 .login .login_content_form .input-box input:focus ~ label {
   top: -2px;
+  font-size: 0.9em;
 }
 .login .login_content_form .input-box input:valid ~ label {
   top: -2px;
+  font-size: 0.9em;
+}
+.login .login_content_form .input-box input:focus {
+  background-color: transparent !important;
+}
+.login .login_content_form .input-box input:-webkit-autofill {
+  background-color: transparent !important;
 }
 .login .login_content_form .input-box .icon {
   position: absolute;
